@@ -1,15 +1,15 @@
 package com.tomgregory;
 
+import jakarta.servlet.DispatcherType;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.actuate.trace.http.HttpTraceRepository;
-import org.springframework.boot.actuate.trace.http.InMemoryHttpTraceRepository;
+import org.springframework.boot.actuate.web.exchanges.HttpExchangeRepository;
+import org.springframework.boot.actuate.web.exchanges.InMemoryHttpExchangeRepository;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.Ordered;
 import org.springframework.web.filter.ForwardedHeaderFilter;
 
-import javax.servlet.DispatcherType;
 import java.util.List;
 
 @SpringBootApplication
@@ -29,7 +29,7 @@ public class MyApplication {
     }
 
     @Bean
-    public HttpTraceRepository httpTraceRepository() {
-        return new InMemoryHttpTraceRepository();
+    public HttpExchangeRepository httpTraceRepository() {
+        return new InMemoryHttpExchangeRepository();
     }
 }
